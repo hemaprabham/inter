@@ -1,0 +1,40 @@
+const express = require('express');
+const app = express();
+const connectDB = require('./db');
+const customerRoutes = require('./routes/customerRoutes');
+app.use(express.json());
+
+// Connect to the database
+connectDB();
+
+// Use the customer routes
+app.use('/api/customers', customerRoutes);
+app.use(express.json());
+app.use(cors());
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
+export default App;
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
+});
+
